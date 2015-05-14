@@ -34,7 +34,7 @@ window.onload = function() {
     canvas.addEventListener('mousemove', function(evt) {
     
         var mousePos = calculateMousePos(evt);
-        paddle1Y = mousePos.y;
+        paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
     
     });
   
@@ -61,7 +61,7 @@ function  moveEverything() {
 
 function drawEverything() {
     colorRect(0,0,canvas.width,canvas.height, "black");
-    colorRect(0,paddle1Y,10,100,"white");
+    colorRect(0,paddle1Y,10,PADDLE_HEIGHT,"white");
     
     // next line draws the ball
     colorCircle(ballX, ballY, 10, "white");
