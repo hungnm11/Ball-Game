@@ -61,8 +61,37 @@
         return step();
     };
     
-    animate('x', 800, 1000);
+    //animate('x', 800, 1000);
     //animate('y', 0, 1000);
+    
+    document.body.addEventListener('keydown', function(e) {
+        var info = meta(e);
+        if (info) {
+            e.preventDefault();
+            animate(info[0], circle[info[0]] + info[1], 1000);
+        }
+        alert(info[1]);
+    });
+    
+    var meta = function(e) {
+        var distance = 100;
+        var prop = 'x';
+        var mult = 1;
+        
+        if (e.which < 37 || e.which > 40) {
+            return false;
+        }
+        
+        if (e.which === 37 || e.which === 38) {
+            mult = -1;
+        }
+        
+        if (e.which === 38 || e.which === 40) {
+            prop = 'y';
+        }
+        
+        return [prop, mult * distance];
+    };
     
 </script>
 </html>
